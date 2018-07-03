@@ -1,5 +1,20 @@
-import './index.css';
-import numeral from 'numeral';
+import {getUsers} from './api/userApi';
 
-const courseValue = numeral(1000).format('$0,0.00');
-console.log(`I would pay ${courseValue} for this awesome course!`); // eslint-disable-line no-console
+console.log('hello');// eslint-disable-line no-console
+
+getUsers().then(result => {
+  console.log('hello');// eslint-disable-line no-console
+  let usersBody = '';
+  console.log(result);// eslint-disable-line no-console
+  result.forEach(user => {
+    usersBody += `<tr>
+      <td></td>
+      <td>${user.id}</td>
+      <td>${user.firstName}</td>
+      <td></td>
+      <td></td>
+    </tr>`
+  });
+  global.document.getElementById('users').innerHTML = usersBody;
+});
+
